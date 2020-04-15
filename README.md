@@ -1,6 +1,6 @@
 # Adobe I/O CodeLabs template
 
-## Getting started 
+## Getting started test
 
 Click on the "Use this template" button to copy the template to your namespace. 
 
