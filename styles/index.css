@@ -1,0 +1,175 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: rgb(30, 30, 30);
+  }
+}
+
+#sideNav {
+  height: 100%;
+  width: 268px;
+  box-sizing: border-box;
+  padding-left: 24px;
+  overflow: scroll;
+  transition: transform 160ms ease-in-out;
+  position: relative;
+  z-index: 10;
+}
+
+#menu {
+  width: 220px;
+  margin: 16px 0;
+}
+
+#viewer {
+  width: calc(100% - 268px);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  overflow-y: auto;
+}
+
+#loading {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  line-height: normal;
+  text-decoration: none;
+}
+
+.logo svg {
+  height: 32px;
+  width: 36px !important;
+  fill: currentColor;
+  color: rgb(225, 37, 27);
+}
+
+.logo h1 {
+  margin-left: 16px;
+}
+
+.nav-toggle-header {
+  display: none;
+  height: 48px;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 0 16px;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 10;
+}
+
+#navToggleAction {
+  height: 36px;
+  width: 36px;
+  fill: currentColor;
+  color: rgb(110, 110, 110);
+  left: 8px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.nav-toggle-header .adobe-icon {
+  height: 32px;
+  width: 36px !important;
+  fill: currentColor;
+  color: rgb(225, 37, 27);
+}
+
+.nav-toggle-header h1 {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.nav-toggle-header a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+#navToggleOverlay {
+  transition: opacity 160ms ease-in;
+  background-color: rgba(0, 0, 0, .4);
+  pointer-events: none;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+
+@media screen and (max-width: 960px) {
+  .nav-toggle-header {
+    display: flex;
+  }
+
+  #navToggleOverlay.is-open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  #viewer {
+    top: 48px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 48px);
+  }
+
+  #sideNav {
+    overflow: hidden;
+    transform: translateX(-100%);
+  }
+
+  #sideNav.is-open {
+    overflow: auto;
+    transform: translateX(0);
+  }
+
+  #sideNav > * {
+    transition: visibility 0ms linear 500ms;
+    visibility: hidden;
+  }
+
+  #sideNav.is-open > * {
+    transition-delay: 0ms;
+    visibility: visible;
+  }
+}
+
+.spectrum--light #sideNav,
+.spectrum--light .nav-toggle-header {
+  background-color: rgb(245, 245, 245);
+}
+
+.spectrum--dark #sideNav,
+.spectrum--dark .nav-toggle-header {
+  background-color: rgb(50, 50, 50);
+}
